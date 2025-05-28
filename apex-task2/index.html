@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Form & To-Do App</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0eafc, #cfdef3);
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background-color: #34495e;
+      padding: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.85rem;
+      margin-top: -0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f1f1f1;
+      padding: 0.7rem;
+      margin-bottom: 0.5rem;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li button {
+      background-color: #e74c3c;
+      padding: 0.3rem 0.7rem;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Contact Form & To-Do List</h1>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Form</a>
+    <a href="#">Tasks</a>
+  </nav>
+
+  <div class="container">
+    <div class="card">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" />
+        <div class="error" id="nameError"></div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" />
+        <div class="error" id="emailError"></div>
+
+        <label for="message">Message:</label>
+        <textarea id="message" rows="5"></textarea>
+        <div class="error" id="messageError"></div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>To-Do List</h2>
+      <input type="text" id="taskInput" placeholder="Enter a new task" />
+      <button onclick="addTask()">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let name = document.getElementById('name').value.trim();
+      let email = document.getElementById('email').value.trim();
+      let message = document.getElementById('message').value.trim();
+
+      let isValid = true;
+
+      document.getElementById('nameError').innerText = '';
+      document.getElementById('emailError').innerText = '';
+      document.getElementById('messageError').innerText = '';
+
+      if (name === '') {
+        document.getElementById('nameError').innerText = 'Name is required';
+        isValid = false;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('emailError').innerText = 'Enter a valid email';
+        isValid = false;
+      }
+
+      if (message === '') {
+        document.getElementById('messageError').innerText = 'Message is required';
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Form submitted successfully!');
+        document.getElementById('contactForm').reset();
+      }
+    });
+
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskText = taskInput.value.trim();
+
+      if (taskText === '') return;
+
+      const li = document.createElement('li');
+      li.textContent = taskText;
+
+      const delButton = document.createElement('button');
+      delButton.textContent = 'Delete';
+      delButton.onclick = () => li.remove();
+
+      li.appendChild(delButton);
+      document.getElementById('taskList').appendChild(li);
+      taskInput.value = '';
+    }
+  </script>
+
+</body>
+</html>
