@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz + Carousel + API Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>🎯Building Interactive, Responsive sites.</header>
+
+  <main class="container">
+    <!-- QUIZ SECTION -->
+    <section class="quiz-section">
+      <h2>📝 Quiz</h2>
+      <p id="question">Loading question...</p>
+      <div id="options"></div>
+      <button id="nextBtn" onclick="nextQuestion()">Next</button>
+      <p id="score"></p>
+    </section>
+
+    <!-- CAROUSEL SECTION -->
+    <section class="carousel-section">
+      <h2>🖼️ Image Carousel</h2>
+      <img id="carouselImage" src="" alt="Carousel Image" />
+      <div class="carousel-controls">
+        <button onclick="prevImage()">⏮️ Prev</button>
+        <button onclick="nextImage()">⏭️ Next</button>
+      </div>
+    </section>
+
+    <!-- JOKE SECTION -->
+    <section class="joke-section">
+      <h2>😂 Want a Joke?</h2>
+      <p id="joke">Click the button to get a joke!</p>
+      <button onclick="getJoke()">Get Joke</button>
+    </section>
+  </main>
+
+  <footer>© 2025 Interactive Web Project</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
