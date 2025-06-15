@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Full Web Project</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <h1>My Web Project</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#todo">To-Do</a></li>
+        <li><a href="#products">Products</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a passionate front-end developer specializing in building responsive and user-friendly web applications using HTML, CSS, and JavaScript.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>Personal Portfolio Website</li>
+      <li>To-Do List App</li>
+      <li>Product Listing Page</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="4"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <section id="todo">
+    <h2>To-Do List</h2>
+    <div class="todo-container">
+      <input type="text" id="todo-input" placeholder="Enter your task..." />
+      <button onclick="addTask()">Add Task</button>
+      <ul id="todo-list"></ul>
+    </div>
+  </section>
+
+  <section id="products">
+    <h2>Product Listing</h2>
+    <div class="controls">
+      <select id="category-filter" onchange="filterProducts()">
+        <option value="all">All Categories</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Books">Books</option>
+      </select>
+      <select id="sort-option" onchange="sortProducts()">
+        <option value="default">Sort By</option>
+        <option value="price">Price</option>
+        <option value="rating">Rating</option>
+      </select>
+    </div>
+    <div id="product-container"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My Web Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
